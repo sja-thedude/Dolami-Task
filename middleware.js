@@ -1,7 +1,9 @@
-// pages/_middleware.js (or app/middleware.js for Next.js 13+)
+// middleware.js
+import { NextResponse } from 'next/server';
+
 export async function middleware(req) {
-    const username = process.env.BASIC_AUTH_USERNAME;
-    const password = process.env.BASIC_AUTH_PASSWORD;
+  const username = process.env.BASIC_AUTH_USERNAME;
+  const password = process.env.BASIC_AUTH_PASSWORD;
 
   const auth = req.headers.get('authorization');
 
