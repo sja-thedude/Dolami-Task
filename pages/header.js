@@ -2,17 +2,26 @@ import Image from "next/image";
 import { useState } from "react";
 import Link from 'next/link';
 
-export default function Header() {
+export default function Header({ onSearch }) {
     const [isLanguageDropdownOpen, setLanguageDropdownOpen] = useState(false);
     const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
     const [isCategoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
     const [isAvatarSubmenuOpen, setAvatarSubmenuOpen] = useState(false);
     const [isFashionSubmenuOpen, setFashionSubmenuOpen] = useState(false);
     const [selectedCategory, setSelectedCategory] = useState("Category All");
+    const [searchQuery, setSearchQuery] = useState(""); // For search input
 
     const handleCategorySelection = (category) => {
-        setSelectedCategory(category); // Update the selected category
-        setCategoryDropdownOpen(false); // Close the dropdown
+        setSelectedCategory(category); 
+        setCategoryDropdownOpen(false);
+    };
+
+    const handleSearchChange = (event) => {
+        setSearchQuery(event.target.value);
+    };
+
+    const handleSearchClick = () => {
+        onSearch(searchQuery); // Pass search query to parent component
     };
 
     return (
@@ -29,21 +38,19 @@ export default function Header() {
                             type="text"
                             placeholder="Keyword"
                             className="search-input"
-                            value={selectedCategory}
-                            readOnly
+                            value={searchQuery}
+                            onChange={handleSearchChange} // Update search query state on input change
                         />
                         <div
                             className="category-dropdown-wrapper"
                             onClick={() => setCategoryDropdownOpen(!isCategoryDropdownOpen)}
-                            onMouseEnter={() => setCategoryDropdownOpen(true)}  // Show dropdown when hovering
-                            onMouseLeave={() => setCategoryDropdownOpen(false)} // Hide dropdown when mouse leaves
+                            onMouseEnter={() => setCategoryDropdownOpen(true)}
+                            onMouseLeave={() => setCategoryDropdownOpen(false)}
                         >
                             <div className="category-dropdown">{selectedCategory}</div>
                             {isCategoryDropdownOpen && (
                                 <ul className="category-options">
-                                    <li onClick={() => handleCategorySelection("Category All")}>
-                                        Category All
-                                    </li>
+                                    <li onClick={() => handleCategorySelection("Category All")}>Category All</li>
                                     <li
                                         onMouseEnter={() => setAvatarSubmenuOpen(true)}
                                         onMouseLeave={() => setAvatarSubmenuOpen(false)}
@@ -51,21 +58,11 @@ export default function Header() {
                                         Category Avatars
                                         {isAvatarSubmenuOpen && (
                                             <ul className="submenu">
-                                                <li onClick={() => handleCategorySelection("Human-like")}>
-                                                    Human-like
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("Anthro & Furry")}>
-                                                    Anthro & Furry
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("Robot & Cyborgs")}>
-                                                    Robot & Cyborgs
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("Others in Avatars")}>
-                                                    Others
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("All in Avatars")}>
-                                                    All in Avatars
-                                                </li>
+                                                <li onClick={() => handleCategorySelection("Human-like")}>Human-like</li>
+                                                <li onClick={() => handleCategorySelection("Anthro & Furry")}>Anthro & Furry</li>
+                                                <li onClick={() => handleCategorySelection("Robot & Cyborgs")}>Robot & Cyborgs</li>
+                                                <li onClick={() => handleCategorySelection("Others in Avatars")}>Others</li>
+                                                <li onClick={() => handleCategorySelection("All in Avatars")}>All in Avatars</li>
                                             </ul>
                                         )}
                                     </li>
@@ -76,25 +73,17 @@ export default function Header() {
                                         Category Fashion
                                         {isFashionSubmenuOpen && (
                                             <ul className="submenu">
-                                                <li onClick={() => handleCategorySelection("Clothes")}>
-                                                    Clothes
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("Accessories")}>
-                                                    Accessories
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("Others in Fashion")}>
-                                                    Others
-                                                </li>
-                                                <li onClick={() => handleCategorySelection("All in Fashion")}>
-                                                    All in Fashion
-                                                </li>
+                                                <li onClick={() => handleCategorySelection("Clothes")}>Clothes</li>
+                                                <li onClick={() => handleCategorySelection("Accessories")}>Accessories</li>
+                                                <li onClick={() => handleCategorySelection("Others in Fashion")}>Others</li>
+                                                <li onClick={() => handleCategorySelection("All in Fashion")}>All in Fashion</li>
                                             </ul>
                                         )}
                                     </li>
                                 </ul>
                             )}
                         </div>
-                        <Image src="/images/searchicon.svg" alt="Search Icon" width={50} height={50} />
+                        <Image src="/images/searchicon.svg" alt="Search Icon" width={50} height={50} onClick={handleSearchClick} />
                     </li>
                     <li>
                         <Image src="/images/filtersearch.svg" alt="Filter Icon" width={50} height={50} />
