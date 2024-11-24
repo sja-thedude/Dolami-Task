@@ -39,16 +39,15 @@ body {
 .card:hover {
   transform: translateY(-10px) scale(1.05);
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-  width: 100%;
 }
 
 /* Navigation */
 nav ul {
   display: flex;
+  flex-direction: row;
   align-items: center;
   list-style-type: none;
-  justify-content: space-evenly;
-  width: 100%;
+  justify-content: space-between;
 }
 
 nav li {
@@ -56,30 +55,43 @@ nav li {
 }
 
 /* Dropdown Styles */
-.language-dropdown.open .language-select,
-.user-dropdown.open .user-select {
-  display: block;
+.language-dropdown,
+.user-dropdown {
+  position: relative;
+  cursor: pointer;
 }
 
 .language-select,
-.user-select {
+.user-select{
   display: none;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
   position: absolute;
-  top: 50px;
-  left: 0;
-  z-index: 1000;
   background-color: rgba(68, 62, 62, 1);
-  color: var(--foreground);
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.language-select option,
-.user-select option {
-  background: var(--background);
-  color: var(--foreground);
-  padding: 5px 10px;
+ .lang{
+   font-size: 15px;
+   display: flex;
+ }
+
+.language-dropdown:hover .language-select,
+.user-dropdown:hover .user-select {
+  display: block;
+}
+
+.language-select li,
+.user-select li {
+  padding: 10px;
+  cursor: pointer;
+  width: 80%;
+}
+
+.language-select li:hover,
+.user-select li:hover {
+  background-color: #646464;
 }
 
 /* Search Bar */
@@ -100,15 +112,18 @@ nav li {
   background-color: rgba(68, 62, 62, 1);
 }
 
-nav {
-  margin-left: 10px;
-  width: 100%;
-}
-
 /* Dropdown Wrapper */
 .category-dropdown-wrapper {
   position: relative;
   background-color: rgba(68, 62, 62, 1);
+  margin-right: 5px;
+}
+
+.line{
+  height: 40px;
+  font-size: 30px;
+  padding: 2px;
+  color: rgb(105, 103, 103);
 }
 
 /* Dropdown Options */
@@ -138,8 +153,7 @@ nav {
 
 .category-options li:hover {
   background-color: #8a8a8a;
-  margin:20px;
-  /* Highlight on hover */
+  margin: 10px;
 }
 
 /* Submenu Options */
@@ -177,7 +191,7 @@ nav {
   display: block;
 }
 
-.center{
+.center {
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -186,8 +200,23 @@ nav {
 }
 
 /* Responsive Cards */
-@media screen and (max-width: 1700px) {
-  .card {
-    width: 250px;
+@media screen and (max-width: 1600px) {
+  .row {
+    display: grid;
+    grid-template-columns: 30% 30% 30%;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .row {
+    display: grid;
+    grid-template-columns: 50% 50%;
+  }
+}
+
+@media screen and (max-width: 700px) {
+  .row {
+    display: grid;
+    grid-template-columns: 100%;
   }
 }

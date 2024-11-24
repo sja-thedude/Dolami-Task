@@ -1,10 +1,10 @@
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Link from 'next/link';
 
 export default function Header({ onSearch }) {
-    const [isLanguageDropdownOpen, setLanguageDropdownOpen] = useState(false);
-    const [isUserDropdownOpen, setUserDropdownOpen] = useState(false);
+
+
     const [isCategoryDropdownOpen, setCategoryDropdownOpen] = useState(false);
     const [isAvatarSubmenuOpen, setAvatarSubmenuOpen] = useState(false);
     const [isFashionSubmenuOpen, setFashionSubmenuOpen] = useState(false);
@@ -41,6 +41,7 @@ export default function Header({ onSearch }) {
                             value={searchQuery}
                             onChange={handleSearchChange} // Update search query state on input change
                         />
+                        <div class="line">|</div>
                         <div
                             className="category-dropdown-wrapper"
                             onClick={() => setCategoryDropdownOpen(!isCategoryDropdownOpen)}
@@ -91,28 +92,30 @@ export default function Header({ onSearch }) {
                     <li>
                         <p>List Your Creation</p>
                     </li>
-                    <li className="language-dropdown" onClick={() => setLanguageDropdownOpen(!isLanguageDropdownOpen)}>
+        
+                     {/* Language Dropdown */}
+                    <li className="language-dropdown">
                         <Image src="/images/lang.svg" alt="Language Icon" width={40} height={40} />
-                        {isLanguageDropdownOpen && (
-                            <ul className="language-select">
-                                <li>English</li>
-                                <li>Japanese</li>
-                            </ul>
-                        )}
+                        <ul className="language-select">
+                            <li class="lang"> <Image src="/images/english.svg" alt="Language Icon" width={15} height={15} /><p>English</p></li>
+                            <li class="lang"> <Image src="/images/japan.svg" alt="Language Icon" width={15} height={15} /><p>Japanese</p></li>
+                        </ul>
                     </li>
-                    <li className="user-dropdown" onClick={() => setUserDropdownOpen(!isUserDropdownOpen)}>
+
+                    {/* User Dropdown */}
+                    <li className="user-dropdown">
                         <Image src="/images/usericon.svg" alt="User Icon" width={70} height={70} />
-                        {isUserDropdownOpen && (
-                            <ul className="user-select">
-                                <li>Sign In</li>
-                                <li>Sign Up</li>
-                                <li>List Your Item</li>
-                                <li>Message to Yuta (The Founder)</li>
-                            </ul>
-                        )}
+                        <ul className="user-select">
+                            <li>Sign In</li>
+                            <li>Sign Up</li>
+                            <li>List Your Item</li>
+                            <li>Message to Yuta (The Founder)</li>
+                        </ul>
                     </li>
                     <li>
+                        <Link href="/cart">
                         <Image src="/images/shoppingcart.svg" alt="Shopping Cart Icon" width={50} height={50} />
+                        </Link>
                     </li>
                 </ul>
             </nav>

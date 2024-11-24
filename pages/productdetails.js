@@ -8,11 +8,11 @@ export default function ProductDetails() {
   const { id } = router.query;
 
   const products = [
-    { id: 1, name: 'Product name', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/humanlike.svg' },
-    { id: 2, name: 'Product name', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/anthrofurry.svg' },
-    { id: 3, name: 'Product name', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/robot.svg' },
-    { id: 4, name: 'Product name', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/clothes.svg' },
-    { id: 5, name: 'Product name', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/accessories.svg' },
+    { id: 1, name: 'Avatars > Human-like', creator: 'SJA', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/humanlike.svg' },
+    { id: 2, name: 'Avatars > Anthro & Furry', creator: 'Dolami', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/anthrofurry.svg' },
+    { id: 3, name: 'Avatars > Robot & Cyborgs', creator: 'Developer', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/robot.svg' },
+    { id: 4, name: 'Fashion > Clothes', creator: 'Gamer', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/clothes.svg' },
+    { id: 5, name: 'Fashion > Accessories', creator: 'Yuta', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/accessories.svg' },
   ];
 
   const product = products.find((p) => p.id === parseInt(id, 10));

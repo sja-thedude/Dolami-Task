@@ -7,11 +7,11 @@ export default function Home() {
   const [filteredProducts, setFilteredProducts] = useState([]); // State for filtered products
 
   const products = [
-    { id: 1, name: 'Avatars > Human-like', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/humanlike.svg' },
-    { id: 2, name: 'Avatars > Anthro & Furry', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/anthrofurry.svg' },
-    { id: 3, name: 'Avatars > Robot & Cyborgs', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/robot.svg' },
-    { id: 4, name: 'Fashion > Clothes', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/clothes.svg' },
-    { id: 5, name: 'Fashion > Accessories', creator: 'Creator name', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/accessories.svg' },
+    { id: 1, name: 'Avatars > Human-like', creator: 'SJA', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/humanlike.svg' },
+    { id: 2, name: 'Avatars > Anthro & Furry', creator: 'Dolami', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/anthrofurry.svg' },
+    { id: 3, name: 'Avatars > Robot & Cyborgs', creator: 'Developer', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/robot.svg' },
+    { id: 4, name: 'Fashion > Clothes', creator: 'Gamer', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/clothes.svg' },
+    { id: 5, name: 'Fashion > Accessories', creator: 'Yuta', imagestar: '/images/stars.svg', rating: 5.0, price: 10.50, image: '/images/accessories.svg' },
   ];
 
   // Function to render main content 3 times in 3 rows
